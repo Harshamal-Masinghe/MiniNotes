@@ -19,9 +19,9 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins"
             android:text="Add Note."
-            android:textStyle="bold"
-            android:textColor="@color/red"
-            android:textSize="24sp" />
+            android:textColor="@color/darkBlue"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/addNoteTitle"
