@@ -51,8 +51,8 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/editNoteFab"
-            android:layout_width="68dp"
-            android:layout_height="68dp"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="20dp"
