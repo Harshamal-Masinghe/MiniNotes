@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="28dp"
-            android:backgroundTint="@color/pink"
+            android:backgroundTint="@color/blue"
             android:clickable="true"
             android:contentDescription="image"
             android:tintMode="@color/white"

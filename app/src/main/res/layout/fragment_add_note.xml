@@ -19,7 +19,7 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins"
             android:text="Add Note."
-            android:textColor="@color/red"
+            android:textColor="@color/darkBlue"
             android:textSize="24sp"
             android:textStyle="bold" />
 
