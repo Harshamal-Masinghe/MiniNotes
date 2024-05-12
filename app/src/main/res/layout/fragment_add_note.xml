@@ -1,14 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.AddNoteFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        tools:context=".NewNoteFragment"
+        android:padding="12dp">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/addNoteHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins"
+            android:text="Add Note."
+            android:textColor="@color/red"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/addNoteTitle"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="Enter the title"
+            android:padding="12dp"
+            android:textSize="20sp"
+            android:layout_below="@id/addNoteHeading"
+            android:background="@drawable/color_boarder"
+            android:layout_marginTop="16dp"
+            android:maxLines="1"
+            android:fontFamily="@font/poppins"/>
+
+        <EditText
+            android:id="@+id/addNoteDesc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Enter the description"
+            android:gravity="top"
+            android:padding="12dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/poppins"
+            android:background="@drawable/color_boarder"
+            android:layout_below="@id/addNoteTitle"
+            android:layout_marginTop="12dp" />
+
+    </RelativeLayout>
+</layout>
