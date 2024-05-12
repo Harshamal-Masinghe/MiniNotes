@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mininotes.databinding.NoteLayoutBinding
 import com.mininotes.model.Note
-import com.mininotes.fragments.HomeFragmentDirections
 
 class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>(){
     class NoteViewHolder(val itemBinding: NoteLayoutBinding) : RecyclerView.ViewHolder(itemBinding.root)

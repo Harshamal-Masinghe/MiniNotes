@@ -36,7 +36,6 @@
             app:destination="@id/homeFragment" />
         <argument
             android:name="note"
-            app:argType="com.mininotes.model.Note"
-            app:nullable="true"/>
+            app:argType="com.mininotes.model.Note"/>
     </fragment>
 </navigation>
