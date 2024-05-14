@@ -3,13 +3,15 @@ package com.mininotes.model
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
-@Entity(tableName = "notes")
 @Parcelize
+@Entity(tableName = "note_table")
 data class Note(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    val noteTitle: String,
-    val noteDesc: String,
-): Parcelable
+    val title: String,
+    val description: String,
+    val priority: Int,
+    val deadline: Long
+) : Parcelable

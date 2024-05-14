@@ -12,8 +12,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import com.mininotes.MainActivity
 import com.mininotes.R
 import com.mininotes.databinding.FragmentEditNoteBinding
@@ -25,7 +28,7 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note), MenuProvider {
     private var editNoteBinding: FragmentEditNoteBinding? = null
     private val binding get() = editNoteBinding!!
 
-    private lateinit var notesViewMode: NoteViewModel
+    private lateinit var notesViewModel: NoteViewModel
     private lateinit var currentNote: Note
 
     private val args: EditNoteFragmentArgs by navArgs()
@@ -44,11 +47,11 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note), MenuProvider {
         val menuHost = requireActivity()
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
-        notesViewMode = (activity as MainActivity).noteViewModel
+        notesViewModel = (activity as MainActivity).noteViewModel
         currentNote = args.note!!
 
-        binding.editNoteTitle.setText(currentNote.noteTitle)
-        binding.editNoteDesc.setText(currentNote.noteDesc)
+        binding.editNoteTitle.setText(currentNote.title)
+        binding.editNoteDesc.setText(currentNote.description)
 
         binding.editNoteFab.setOnClickListener {
             val noteTitle = binding.editNoteTitle.text.toString().trim()
@@ -58,9 +61,13 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note), MenuProvider {
                 val note = Note(
                     currentNote.id,
                     noteTitle,
-                    noteDesc
+                    noteDesc,
+                    currentNote.priority,
+                    currentNote.deadline
                 )
-                notesViewMode.updateNote(note)
+                lifecycleScope.launch(Dispatchers.Main) {
+                    notesViewModel.update(note)
+                }
 
                 view.findNavController().popBackStack(R.id.homeFragment, false)
             } else {
@@ -75,7 +82,9 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note), MenuProvider {
             setTitle("Delete Note")
             setMessage("Are you sure you want to delete this note?")
             setPositiveButton("Yes") { _, _ ->
-                notesViewMode.deleteNote(currentNote)
+                lifecycleScope.launch(Dispatchers.Main) {
+                    notesViewModel.delete(currentNote)
+                }
                 Toast.makeText(context, "Note Deleted", Toast.LENGTH_SHORT).show()
                 view?.findNavController()?.popBackStack(R.id.homeFragment, false)
             }

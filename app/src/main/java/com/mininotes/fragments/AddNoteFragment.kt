@@ -11,14 +11,18 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import com.mininotes.MainActivity
 import com.mininotes.R
+import com.mininotes.R.layout.fragment_add_note
 import com.mininotes.databinding.FragmentAddNoteBinding
 import com.mininotes.model.Note
 import com.mininotes.viewmodel.NoteViewModel
 
-class AddNoteFragment : Fragment(R.layout.fragment_add_note), MenuProvider {
+class AddNoteFragment : Fragment(fragment_add_note), MenuProvider {
 
     private var addNoteBinding: FragmentAddNoteBinding? = null
     private val binding get() = addNoteBinding!!
@@ -45,12 +49,14 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), MenuProvider {
     }
 
     private fun saveNote(view: View) {
-        val notTitle = binding.addNoteTitle.text.toString().trim()
+        val noteTitle = binding.addNoteTitle.text.toString().trim()
         val noteDesc = binding.addNoteDesc.text.toString().trim()
 
-        if (notTitle.isNotEmpty()) {
-            val note = Note(0, notTitle, noteDesc)
-            notesViewModel.addNote(note)
+        if (noteTitle.isNotEmpty()) {
+            val note = Note(0, noteTitle, noteDesc, 0, 0L)
+            lifecycleScope.launch(Dispatchers.Main) {
+                notesViewModel.insert(note)
+            }
 
             Toast.makeText(requireContext(), "Note Saved", Toast.LENGTH_SHORT).show()
             view.findNavController().popBackStack(R.id.homeFragment, false)

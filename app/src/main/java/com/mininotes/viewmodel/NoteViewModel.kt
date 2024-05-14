@@ -1,28 +1,26 @@
 package com.mininotes.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import com.mininotes.model.Note
 import com.mininotes.repository.NoteRepository
-import kotlinx.coroutines.launch
 
-class NoteViewModel(app: Application, private val noteRepository: NoteRepository) : AndroidViewModel(app){
+class NoteViewModel(private val repository: NoteRepository) : ViewModel() {
+    val allNotes: LiveData<List<Note>> = repository.getAllNotes()
 
-    fun addNote(note: Note) =
-        viewModelScope.launch {
-            noteRepository.insertNote(note)
-        }
-    fun updateNote(note: Note) =
-        viewModelScope.launch {
-            noteRepository.updateNote(note)
-        }
-    fun deleteNote(note: Note) =
-        viewModelScope.launch {
-            noteRepository.deleteNote(note)
-        }
-    fun getAllNotes() = noteRepository.getAllNotes()
+    suspend fun insert(note: Note) {
+        repository.insert(note)
+    }
 
-    fun searchNote(query: String?) = noteRepository.searchNote(query)
+    suspend fun update(note: Note) {
+        repository.update(note)
+    }
 
+    suspend fun delete(note: Note) {
+        repository.delete(note)
+    }
+
+    fun searchNotes(searchQuery: String): LiveData<List<Note>> {
+        return repository.searchNotes(searchQuery)
+    }
 }

@@ -21,21 +21,28 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_addNoteFragment"
-            app:destination="@id/addNoteFragment" />
+            app:destination="@id/addNoteFragment" >
+            <argument
+                android:name="note"
+                app:argType="com.mininotes.model.Note" />
+        </action>
         <action
             android:id="@+id/action_homeFragment_to_editNoteFragment"
-            app:destination="@id/editNoteFragment" />
+            app:destination="@id/editNoteFragment" >
+            <argument
+                android:name="note"
+                app:argType="com.mininotes.model.Note" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/editNoteFragment"
         android:name="com.mininotes.fragments.EditNoteFragment"
         android:label="fragment_edit_note"
         tools:layout="@layout/fragment_edit_note" >
-        <action
-            android:id="@+id/action_editNoteFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
         <argument
             android:name="note"
-            app:argType="com.mininotes.model.Note"/>
+            app:argType="com.mininotes.model.Note"
+            android:defaultValue="@null"
+            app:nullable="true" />
     </fragment>
 </navigation>

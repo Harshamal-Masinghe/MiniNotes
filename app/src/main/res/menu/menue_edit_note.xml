@@ -7,4 +7,15 @@
         android:icon="@drawable/baseline_delete_24"
         android:title=""
         app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/editPriority"
+        android:title="Edit Priority"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/editDeadline"
+        android:title="Edit Deadline"
+        app:showAsAction="never" />
+
 </menu>

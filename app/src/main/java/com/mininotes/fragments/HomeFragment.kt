@@ -12,8 +12,11 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import com.mininotes.MainActivity
 import com.mininotes.R
 import com.mininotes.adapter.NoteAdapter
@@ -73,7 +76,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         }
 
         activity?.let {
-            notesViewModel.getAllNotes().observe(viewLifecycleOwner) { note ->
+            notesViewModel.allNotes.observe(viewLifecycleOwner) { note ->
                 noteAdapter.differ.submitList(note)
                 updateUI(note)
             }
@@ -83,7 +86,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
     private fun searchNote(query: String?) {
         val searchQuery = "%$query%"
 
-        notesViewModel.searchNote(searchQuery).observe(this) { list ->
+        notesViewModel.searchNotes(searchQuery).observe(this) { list ->
             noteAdapter.differ.submitList(list)
         }
     }

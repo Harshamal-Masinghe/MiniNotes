@@ -8,4 +8,15 @@
         android:title="Search"
         app:showAsAction="ifRoom"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
+
+    <item
+        android:id="@+id/sortByPriority"
+        android:title="Sort by Priority"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/sortByDeadline"
+        android:title="Sort by Deadline"
+        app:showAsAction="never" />
+
 </menu>

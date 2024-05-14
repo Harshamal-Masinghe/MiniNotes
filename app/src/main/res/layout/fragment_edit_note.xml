@@ -4,63 +4,96 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="12dp"
-        tools:context=".UpdateNoteFragment">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/editNoteHeading"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/poppins"
-            android:text="Edit Note."
-            android:textStyle="bold"
-            android:textColor="@color/darkBlue"
-            android:textSize="24sp" />
+            android:orientation="vertical"
+            tools:context=".UpdateNoteFragment"
+            android:padding="12dp">
 
-        <EditText
-            android:id="@+id/editNoteTitle"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:hint="Enter the title"
-            android:padding="12dp"
-            android:textSize="20sp"
-            android:layout_below="@id/editNoteHeading"
-            android:background="@drawable/color_boarder"
-            android:layout_marginTop="16dp"
-            android:maxLines="1"
-            android:fontFamily="@font/poppins"/>
+            <TextView
+                android:id="@+id/editNoteHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins"
+                android:text="Edit Note."
+                android:textStyle="bold"
+                android:textColor="@color/darkBlue"
+                android:textSize="24sp" />
 
-        <EditText
-            android:id="@+id/editNoteDesc"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Enter the description"
-            android:gravity="top"
-            android:padding="12dp"
-            android:textSize="18sp"
-            android:fontFamily="@font/poppins"
-            android:background="@drawable/color_boarder"
-            android:layout_below="@id/editNoteTitle"
-            android:layout_marginTop="12dp" />
+            <EditText
+                android:id="@+id/editNoteTitle"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="Enter the title"
+                android:padding="12dp"
+                android:textSize="20sp"
+                android:layout_below="@id/editNoteHeading"
+                android:background="@drawable/color_boarder"
+                android:layout_marginTop="16dp"
+                android:maxLines="1"
+                android:fontFamily="@font/poppins"/>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/editNoteFab"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="@color/blue"
-            android:clickable="true"
-            android:contentDescription="editFab"
-            android:src="@drawable/baseline_done_24"
-            android:tintMode="@color/white" />
+            <EditText
+                android:id="@+id/editNoteDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter the description"
+                android:gravity="top"
+                android:padding="12dp"
+                android:textSize="18sp"
+                android:fontFamily="@font/poppins"
+                android:background="@drawable/color_boarder"
+                android:layout_below="@id/editNoteTitle"
+                android:layout_marginTop="12dp" />
 
-    </RelativeLayout>
+            <EditText
+                android:id="@+id/editNotePriority"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="Enter the priority"
+                android:padding="12dp"
+                android:textSize="20sp"
+                android:layout_below="@id/editNoteDesc"
+                android:background="@drawable/color_boarder"
+                android:layout_marginTop="16dp"
+                android:maxLines="1"
+                android:fontFamily="@font/poppins"
+                android:inputType="number"/>
+
+            <EditText
+                android:id="@+id/editNoteDeadline"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="Enter the deadline"
+                android:padding="12dp"
+                android:textSize="20sp"
+                android:layout_below="@id/editNotePriority"
+                android:background="@drawable/color_boarder"
+                android:layout_marginTop="16dp"
+                android:maxLines="1"
+                android:fontFamily="@font/poppins"
+                android:inputType="datetime"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/editNoteFab"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/blue"
+                android:clickable="true"
+                android:contentDescription="editFab"
+                android:src="@drawable/baseline_done_24"
+                android:tintMode="@color/white" />
+
+        </RelativeLayout>
+    </ScrollView>
 </layout>

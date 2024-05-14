@@ -19,9 +19,8 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:id="@+id/noteTitle"
-                android:layout_weight="200"
                 android:textColor="@color/darkBlue"
                 android:fontFamily="@font/poppins"
                 android:text="Note Title"
@@ -35,6 +34,26 @@
                 android:layout_marginTop="8dp"
                 android:maxHeight="170dp"
                 android:text="Description"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/blue"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/notePriority"
+                android:layout_marginTop="8dp"
+                android:text="Priority"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/blue"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/noteDeadline"
+                android:layout_marginTop="8dp"
+                android:text="Deadline"
                 android:textSize="14sp"
                 android:fontFamily="@font/poppins"
                 android:textColor="@color/blue"/>
